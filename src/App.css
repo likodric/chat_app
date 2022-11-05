@@ -1,0 +1,46 @@
+@import "~antd/dist/antd.css";
+
+.App {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.logIn {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.logInInputs {
+  width: 400px;
+  margin: 10px;
+}
+.wrapper {
+  width: 70%;
+  height: 70%;
+  border: 2px solid black;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.singIn {
+  width: 50%;
+  height: 100%;
+  /* background-color: aqua; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.inputsForNewUser {
+  width: 300px;
+  height: 20px;
+  margin: 10px;
+}

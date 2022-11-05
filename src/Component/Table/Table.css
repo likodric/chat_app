@@ -1,0 +1,9 @@
+.table {
+  width: 100%;
+  height: 100vh;
+  background-color: #ada9a9;
+  scrollbar-color: #ec0000;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+/*# sourceMappingURL=Table.css.map */

@@ -1,0 +1,20 @@
+.userOnHomePage {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  background-color: rgb(105, 240, 245);
+  width: 300px;
+  height: 80%;
+  margin: 2px;
+  border: 2px solid grey;
+}
+
+.image {
+  width: 90%;
+  height: 70%;
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

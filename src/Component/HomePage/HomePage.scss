@@ -1,0 +1,66 @@
+.homePage {
+  width: 100%;
+  height: 100%;
+  background-color: grey;
+
+  .header {
+    height: 100px;
+    width: 100%;
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    input {
+      height: 50px;
+      width: 400px;
+    }
+    .menu {
+      display: flex;
+      width: 100%;
+      height: 50px;
+      flex-direction: row;
+    }
+  }
+  .body {
+    width: 80%;
+    margin-left: 10%;
+    height: 89vh;
+    display: flex;
+    flex-wrap: wrap;
+    .filteredUser {
+      height: 400px;
+      width: 100%;
+      background-color: rgb(57, 57, 55);
+    }
+    .premiumUser {
+      height: 400px;
+      width: 100%;
+      background-color: rgb(113, 108, 108);
+      display: flex;
+      align-items: center;
+    }
+    .story {
+      width: 100%;
+      height: 50px;
+      background-color: #fff;
+    }
+    .story::selection {
+      color: aqua;
+      background-color: red;
+    }
+    display: flex;
+    .onlineUsers {
+      height: 700px;
+      width: 200px;
+      background-color: aqua;
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+    }
+  }
+
+  .buttonInHeader {
+    height: 100%;
+    width: 20%;
+    border: none;
+  }
+}
