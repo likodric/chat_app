@@ -4,55 +4,45 @@
   height: 100vh;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
 }
 
-.logIn {
-  width: 50%;
-  height: 100%;
+.logInPage {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/221808/sky.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.logInCard {
+  width: 400px;
+  height: 600px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  border: 2px solid rgb(37, 146, 84);
+  border-radius: 40px;
+  background-color: rgb(37, 37, 131);
+  opacity: 0.7;
+  Button {
+    justify-content: space-around;
+  }
 }
 .logInInputs {
-  width: 400px;
+  width: 300px;
   margin: 10px;
-}
-.wrapper {
-  width: 70%;
-  height: 70%;
-  border: 2px solid black;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .singIn {
-  width: 100%;
+  width: 400px;
   height: 100%;
   background-color: aqua;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.waves {
-  position: relative;
-  background-color: red;
-  width: 100%;
-  height: 15vh;
-  margin-bottom: -7px; /*Fix for safari gap*/
-  min-height: 100px;
-  max-height: 150px;
-}
-
-.content {
-  position: relative;
-  height: 100vh;
-  text-align: center;
-  background-color: white;
 }

@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { NewUser } from "../../userType";
+import Chat from "../Chat/Chat";
+import MyProfile from "../MyProfile/MyProfile";
 import SingleUser from "../SingleUser/SingleUser";
 import UserOnHomePage from "../UserOnHomePage/UserOnHomePage";
 import "./HomePage.scss";
@@ -14,6 +16,9 @@ interface HomePageProp {
 
 function HomePage({ users }: HomePageProp) {
   const [filterUserModal, setFilterUserModal] = useState<boolean>(false);
+  const [filteredUsersByName, setFilterUsersByName] = useState<string>("");
+  const [showMyProfile, setShowMyProfile] = useState<boolean>(false);
+  const [openChat, setOpenChat] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -22,45 +27,56 @@ function HomePage({ users }: HomePageProp) {
 
   return (
     <div className="homePage">
+      <Chat />
+
       <div className="header">
-        <Button className="buttonInHeader">Pocetna</Button>
+        <Button
+          className="buttonInHeader"
+          onClick={() => setShowMyProfile(false)}
+        >
+          Pocetna
+        </Button>
         <Button
           className="buttonInHeader"
           onClick={() => setFilterUserModal(true)}
         >
           Pretraga
         </Button>
-        <Button className="buttonInHeader">Moj Profil</Button>
+        <Button
+          className="buttonInHeader"
+          onClick={() => setShowMyProfile(true)}
+        >
+          Moj Profil
+        </Button>
         <Button className="buttonInHeader" onClick={() => handleLogout()}>
           izloguj se
         </Button>
       </div>
-      {/* <div className="welcomeMessage">
-        <p>Dobro dosao nazad</p>
-        <span className="progress"></span>
-      </div> */}
-
-      <div className="body">
-        <Modal
-          visible={filterUserModal}
-          onCancel={() => setFilterUserModal(false)}
-        >
-          Pretrazi korisnike po: Ime/Prezime
-          <Input placeholder="Ime/Prezime" />
-          <Input placeholder="" />
-          Godine od-do{" "}
-          <Slider range={{ draggableTrack: true }} min={18} max={80}></Slider>
-          <Input />
-        </Modal>
-        <div className="story"> </div>
-        <div className="premiumUser">
-          {users.map((user: any, i: number) => {
-            return <UserOnHomePage user={user} key={i} />;
-          })}
+      {showMyProfile ? (
+        <MyProfile />
+      ) : (
+        <div className="body">
+          <Modal
+            visible={filterUserModal}
+            onCancel={() => setFilterUserModal(false)}
+          >
+            Pretrazi korisnike po: Ime/Prezime
+            <Input placeholder="Ime/Prezime" />
+            <Input placeholder="" />
+            Godine od-do{" "}
+            <Slider range={{ draggableTrack: true }} min={18} max={80}></Slider>
+            <Input />
+          </Modal>
+          <div className="story">radi me na stori breee </div>
+          <div className="premiumUser">
+            {users.map((user: any, i: number) => {
+              return <UserOnHomePage user={user} key={i} />;
+            })}
+          </div>
+          <div className="filteredUser"></div>
+          <div className="onlineUsers">Aktivni cetovi</div>
         </div>
-        <div className="filteredUser"></div>
-        <div className="onlineUsers">Aktivni cetovi</div>
-      </div>
+      )}
     </div>
   );
 }

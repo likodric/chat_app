@@ -81,17 +81,29 @@ function LogIn({ setUsers, users, setFileList, fileList }: LogInProp) {
   };
 
   const LogInForm = (values: any) => {
-    if (
-      values.username === privremeniLogIn.username ||
-      values.pass === privremeniLogIn.pass
-    ) {
-      navigate("/home");
-    } else console.log("fefefe");
+    // if (
+    //   values.username !== privremeniLogIn.username ||
+    //   values.password !== privremeniLogIn.pass
+    // ) {
+    //   navigate("/home");
+    // } else console.log("fefefe");
+    onChangeInputValue(values);
+  };
+
+  const onChangeInputValue = (e: any) => {
+    for (var i = 0; i < users.length; i++) {
+      if (
+        users[i].email === e.target.value ||
+        users[i].password === e.target.value
+      ) {
+        navigate("/home");
+      } else alert("greska");
+    }
   };
 
   return (
-    <div>
-      <div className="logIn">
+    <div className="logInPage">
+      <div className="logInCard">
         <Form form={form}>
           <Form.Item>
             <Input
@@ -99,6 +111,7 @@ function LogIn({ setUsers, users, setFileList, fileList }: LogInProp) {
               className="logInInputs"
               placeholder="Email"
               required={true}
+              onChange={onChangeInputValue}
             />
           </Form.Item>
           <Form.Item>
@@ -108,6 +121,7 @@ function LogIn({ setUsers, users, setFileList, fileList }: LogInProp) {
               className="logInInputs"
               placeholder="Sifra"
               required={true}
+              onChange={onChangeInputValue}
             />
           </Form.Item>
           <Button type="primary" onClick={(e) => LogInForm(e)}>
