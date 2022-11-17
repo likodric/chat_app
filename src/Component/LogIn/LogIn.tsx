@@ -14,6 +14,8 @@ interface LogInProp {
 
 function LogIn({ setUsers, users, setFileList, fileList }: LogInProp) {
   const [canSubmit, setCanSubmit] = useState<boolean>(false);
+  const [pass, setPass] = useState<string>("");
+  const [email, setEmail] = useState<string>();
 
   localStorage.setItem(fileList, "");
 
@@ -52,10 +54,10 @@ function LogIn({ setUsers, users, setFileList, fileList }: LogInProp) {
   const handleChange = () => {
     setCanSubmit(form.getFieldValue("name") && form.getFieldValue("email"));
   };
-  const navigate = useNavigate();
 
   const { Option } = Select;
 
+  const [LogInform] = Form.useForm();
   const [form] = Form.useForm();
 
   const onGenderChange = (value: string) => {
@@ -75,56 +77,51 @@ function LogIn({ setUsers, users, setFileList, fileList }: LogInProp) {
     form.resetFields();
   };
 
-  const privremeniLogIn = {
-    username: "Gadzet",
-    pass: "12345",
-  };
+  // const LogInForm = (values: any) => {
+  //   if (
+  //     values.username !== privremeniLogIn.username ||
+  //     values.password !== privremeniLogIn.pass
+  //   ) {
+  //     navigate("/home");
+  //   } else console.log("fefefe");
+  // };
 
-  const LogInForm = (values: any) => {
-    // if (
-    //   values.username !== privremeniLogIn.username ||
-    //   values.password !== privremeniLogIn.pass
-    // ) {
-    //   navigate("/home");
-    // } else console.log("fefefe");
-    onChangeInputValue(values);
-  };
-
-  const onChangeInputValue = (e: any) => {
-    for (var i = 0; i < users.length; i++) {
-      if (
-        users[i].email === e.target.value ||
-        users[i].password === e.target.value
-      ) {
-        navigate("/home");
-      } else alert("greska");
+  const navigate = useNavigate();
+  const onFinishLogIn = () => {
+    const lazniMejl = "ivan";
+    const lazniPass = "12345";
+    if (lazniMejl === email && lazniPass === pass) {
+      navigate("/home");
+    } else {
+      alert("greska");
     }
   };
 
   return (
     <div className="logInPage">
       <div className="logInCard">
-        <Form form={form}>
+        <Form form={LogInform} onFinish={onFinishLogIn}>
           <Form.Item>
             <Input
-              type="email"
+              // type="email"
+              name="email"
               className="logInInputs"
+              onChange={(e: any) => setEmail(e.target.value)}
               placeholder="Email"
               required={true}
-              onChange={onChangeInputValue}
             />
           </Form.Item>
           <Form.Item>
             <Input
+              onChange={(e: any) => setPass(e.target.value)}
               type="password"
               name="password"
               className="logInInputs"
               placeholder="Sifra"
               required={true}
-              onChange={onChangeInputValue}
             />
           </Form.Item>
-          <Button type="primary" onClick={(e) => LogInForm(e)}>
+          <Button type="primary" htmlType="submit">
             Uloguj se
           </Button>
         </Form>
