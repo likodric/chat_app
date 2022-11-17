@@ -27,7 +27,7 @@ function HomePage({ users }: HomePageProp) {
 
   return (
     <div className="homePage">
-      <Chat />
+      {openChat ? <Chat setOpenChat={setOpenChat} /> : null}
 
       <div className="header">
         <Button
@@ -70,7 +70,9 @@ function HomePage({ users }: HomePageProp) {
           <div className="story">radi me na stori breee </div>
           <div className="premiumUser">
             {users.map((user: any, i: number) => {
-              return <UserOnHomePage user={user} key={i} />;
+              return (
+                <UserOnHomePage user={user} key={i} setOpenChat={setOpenChat} />
+              );
             })}
           </div>
           <div className="filteredUser"></div>

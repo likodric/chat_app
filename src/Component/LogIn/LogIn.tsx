@@ -77,15 +77,6 @@ function LogIn({ setUsers, users, setFileList, fileList }: LogInProp) {
     form.resetFields();
   };
 
-  // const LogInForm = (values: any) => {
-  //   if (
-  //     values.username !== privremeniLogIn.username ||
-  //     values.password !== privremeniLogIn.pass
-  //   ) {
-  //     navigate("/home");
-  //   } else console.log("fefefe");
-  // };
-
   const navigate = useNavigate();
   const onFinishLogIn = () => {
     const lazniMejl = "ivan";
